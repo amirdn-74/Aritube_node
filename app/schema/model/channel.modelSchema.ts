@@ -1,3 +1,4 @@
+import { strict } from "assert";
 import mongoose from "mongoose";
 
 const channelSchema = new mongoose.Schema(
@@ -8,6 +9,12 @@ const channelSchema = new mongoose.Schema(
       unique: true,
     },
     banner: {
+      type: String,
+    },
+    profile: {
+      type: String,
+    },
+    about: {
       type: String,
     },
     subscriber: {

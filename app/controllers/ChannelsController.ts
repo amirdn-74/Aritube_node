@@ -21,6 +21,38 @@ class ChannelsController {
 
     res.send(channel);
   }
+
+  public async getMyChannel(req: Request, res: Response) {
+    res.send(req.channel);
+  }
+
+  public async updateName(req: Request, res: Response) {
+    req.channel.name = req.body.channelName;
+    await req.channel.save();
+
+    res.send(req.channel);
+  }
+
+  public async updateProfilePicture(req: Request, res: Response) {
+    req.channel.profile = req.file.filename;
+    const updatedChannel = await req.channel.save();
+
+    res.send(updatedChannel);
+  }
+
+  public async updateBannerPicture(req: Request, res: Response) {
+    req.channel.banner = req.file.filename;
+    const updatedChannel = await req.channel.save();
+
+    res.send(updatedChannel);
+  }
+
+  public async updateAbout(req: Request, res: Response) {
+    req.channel.about = req.body.about;
+    const updated = await req.channel.save();
+
+    res.send(updated);
+  }
 }
 
 export default new ChannelsController();
