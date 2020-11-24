@@ -97,6 +97,8 @@ describe("change channel name", () => {
 
     const fn = res.body.profile;
 
+    console.log(res.body);
+
     fs.readdir("./public/tests/channel", (err, files) => {
       if (err) return console.log(err);
       expect(files.indexOf(fn)).not.toBe(-1);

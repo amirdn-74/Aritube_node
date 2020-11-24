@@ -50,8 +50,8 @@ describe("change channel name", () => {
     expect(res.status).toBe(400);
   });
 
-  it("should return 400 if about is more than 200", async () => {
-    about = new Array(201).join("a");
+  it("should return 400 if about is more than 2000", async () => {
+    about = new Array(2001).join("a");
     const res = await exec();
 
     expect(res.status).toBe(400);

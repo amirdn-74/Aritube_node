@@ -47,14 +47,15 @@ export const updateChannelProfileValidation = async (
   }).single("profilePicture");
 
   doUpload(req, res, async (er: any) => {
-    if (er) return res.status(400).send(makeValidationError(er));
-    if (!req.body.profilePicture && !req.file)
-      return res.status(400).send(
-        makeValidationError({
-          field: "profilePicture",
-          message: "profile picture is required",
-        })
-      );
+    if (er) return res.status(400).send(makeValidationError(er).inner);
+    if (!req.body.profilePicture && !req.file) {
+      const errors = makeValidationError({
+        field: "profilePicture",
+        message: "profile picture is required",
+      }).inner;
+
+      return res.status(400).send("errors");
+    }
 
     next();
   });
@@ -73,14 +74,15 @@ export const updateChannelBannerValidation = async (
   }).single("bannerPicture");
 
   doUpload(req, res, async (err: any) => {
-    if (err) return res.status(400).send(makeValidationError(err));
-    if (!req.body.bannerPicture && !req.file)
+    if (err) return res.status(400).send(makeValidationError(err).inner);
+    if (!req.body.bannerPicture && !req.file) {
       return res.status(400).send(
         makeValidationError({
           field: "bannerPicture",
           message: "banner message is required",
-        })
+        }).inner
       );
+    }
 
     next();
   });
