@@ -1,4 +1,5 @@
 import { IChannel } from "../app/schema/interface/IChannel";
+import { IPlaylist } from "../app/schema/interface/IPlaylist";
 import { IUser } from "../app/schema/interface/IUser";
 
 declare global {
@@ -6,6 +7,7 @@ declare global {
     interface Request {
       user: IUser;
       channel: IChannel;
+      playlist: IPlaylist;
     }
   }
 }

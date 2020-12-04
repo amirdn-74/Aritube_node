@@ -54,7 +54,7 @@ export const updateChannelProfileValidation = async (
         message: "profile picture is required",
       }).inner;
 
-      return res.status(400).send("errors");
+      return res.status(400).send(errors);
     }
 
     next();

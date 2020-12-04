@@ -34,9 +34,9 @@ class User extends mongoose.model("User", userSchema) implements IUser {
   public async createChannel(name: string) {
     await this.setHasChannel(true);
 
-    return await Channel.create({
+    return <IChannel>await Channel.create({
       userId: this._id,
-      name,
+      name: name,
     });
   }
 

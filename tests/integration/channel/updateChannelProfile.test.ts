@@ -49,7 +49,7 @@ describe("change channel name", () => {
     const res = await exec();
 
     expect(res.status).toBe(400);
-    expect(res.body.inner[0].path).toBe("profilePicture");
+    expect(res.body[0].path).toBe("profilePicture");
   });
 
   it("should return 400 if file is not an image", async () => {
@@ -57,7 +57,7 @@ describe("change channel name", () => {
     const res = await exec();
 
     expect(res.status).toBe(400);
-    expect(res.body.inner[0].path).toBe("profilePicture");
+    expect(res.body[0].path).toBe("profilePicture");
   });
 
   it("should return 400 if file size is more than 1mb", async () => {
@@ -65,7 +65,7 @@ describe("change channel name", () => {
     const res = await exec();
 
     expect(res.status).toBe(400);
-    expect(res.body.inner[0].path).toBe("profilePicture");
+    expect(res.body[0].path).toBe("profilePicture");
   });
 
   it("should return 200 if request is valid", async () => {
@@ -96,8 +96,6 @@ describe("change channel name", () => {
     const res = await exec();
 
     const fn = res.body.profile;
-
-    console.log(res.body);
 
     fs.readdir("./public/tests/channel", (err, files) => {
       if (err) return console.log(err);

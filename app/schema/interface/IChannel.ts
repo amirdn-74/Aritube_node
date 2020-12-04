@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { IPlaylist } from "./IPlaylist";
 
 export interface IChannel extends mongoose.Document {
   name?: string;
@@ -9,4 +10,6 @@ export interface IChannel extends mongoose.Document {
   subscriber?: number;
   createdAt?: Date;
   updatedAt?: Date;
+
+  createPlaylist(name: string): Promise<IPlaylist>;
 }

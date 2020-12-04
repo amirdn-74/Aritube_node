@@ -23,7 +23,6 @@ class ChannelsController {
   }
 
   public async getMyChannel(req: Request, res: Response) {
-    console.log(req.channel);
     res.send(req.channel);
   }
 
